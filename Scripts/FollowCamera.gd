@@ -28,3 +28,12 @@ func _process(delta):
 		position += Vector3(1.0, 0.0, 0.0)
 	
 	look_at(target.position)
+
+func _input(event):
+
+	# We scroll the mouse wheel
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			view_distance *= 1.1
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			view_distance *= 0.9

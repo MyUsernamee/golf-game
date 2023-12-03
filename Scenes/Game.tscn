@@ -53,10 +53,12 @@ transform = Transform3D(0.619587, 0.756065, -0.210898, 0, 0.268684, 0.963228, 0.
 [node name="Plane" type="StaticBody3D" parent="."]
 
 [node name="PlaneMesh" type="MeshInstance3D" parent="Plane"]
+transform = Transform3D(11.6487, 0, 0, 0, 1, 0, 0, 0, 6.85002, 0, 0, 0)
 material_override = ExtResource("2_c1sgj")
 mesh = SubResource("PlaneMesh_6wesx")
 
 [node name="PlaneShape" type="CollisionShape3D" parent="Plane"]
+transform = Transform3D(12.0193, 0, 0, 0, 1, 0, 0, 0, 7.64972, 0, 0, 0)
 shape = SubResource("BoxShape3D_bu3nq")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
