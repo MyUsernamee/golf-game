@@ -1,10 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgyhyon47n4f"]
+[gd_scene load_steps=17 format=3 uid="uid://bgyhyon47n4f"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_0rfsq"]
 [ext_resource type="Material" uid="uid://m1j8r7bxwou5" path="res://Materials/dark.tres" id="2_c1sgj"]
 [ext_resource type="Script" path="res://Scripts/Controller.gd" id="3_yjjqe"]
 [ext_resource type="Material" uid="uid://d1rdrtnhoubt6" path="res://Materials/red.tres" id="4_jknlk"]
 [ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="4_vic1y"]
+[ext_resource type="Script" path="res://Scripts/LevelGenerator.gd" id="6_dtale"]
+[ext_resource type="PackedScene" uid="uid://bjvitnsuib3xa" path="res://LevelPeices/start.tscn" id="6_re0tq"]
+[ext_resource type="PackedScene" uid="uid://dj0y4exjehdhh" path="res://LevelPeices/end.tscn" id="8_4ehfh"]
+[ext_resource type="PackedScene" uid="uid://kv0hrqqaghqe" path="res://LevelPeices/middle.tscn" id="9_nbpcp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5tod"]
 sky_top_color = Color(0.501961, 0.701961, 0.992157, 1)
@@ -16,13 +20,6 @@ sky_material = SubResource("ProceduralSkyMaterial_r5tod")
 background_mode = 2
 sky = SubResource("Sky_8tue2")
 sdfgi_enabled = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_6wesx"]
-material = ExtResource("2_c1sgj")
-size = Vector2(100, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bu3nq"]
-size = Vector3(100, 0.01, 100)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nnjfv"]
 rough = true
@@ -50,17 +47,6 @@ environment = SubResource("Environment_pjjuc")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.619587, 0.756065, -0.210898, 0, 0.268684, 0.963228, 0.784928, -0.596804, 0.166473, -1.21927, 2.34392, 0.482507)
 
-[node name="Plane" type="StaticBody3D" parent="."]
-
-[node name="PlaneMesh" type="MeshInstance3D" parent="Plane"]
-transform = Transform3D(11.6487, 0, 0, 0, 1, 0, 0, 0, 6.85002, 0, 0, 0)
-material_override = ExtResource("2_c1sgj")
-mesh = SubResource("PlaneMesh_6wesx")
-
-[node name="PlaneShape" type="CollisionShape3D" parent="Plane"]
-transform = Transform3D(12.0193, 0, 0, 0, 1, 0, 0, 0, 7.64972, 0, 0, 0)
-shape = SubResource("BoxShape3D_bu3nq")
-
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("4_vic1y")
 target = NodePath("../GolfBall/RigidBody")
@@ -87,3 +73,9 @@ shape = SubResource("SphereShape3D_o0xa1")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.5)
 mesh = SubResource("CylinderMesh_d23b4")
 skeleton = NodePath("../../..")
+
+[node name="LevelGenerator" type="Node3D" parent="."]
+script = ExtResource("6_dtale")
+start_piece = ExtResource("6_re0tq")
+end_piece = ExtResource("8_4ehfh")
+pieces = Array[PackedScene]([ExtResource("9_nbpcp")])

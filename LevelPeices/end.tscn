@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj0y4exjehdhh"]
+
+[ext_resource type="PackedScene" uid="uid://bjvitnsuib3xa" path="res://LevelPeices/start.tscn" id="1_6bn47"]
+[ext_resource type="Material" uid="uid://m1j8r7bxwou5" path="res://Materials/dark.tres" id="2_7f04m"]
+
+[node name="End" instance=ExtResource("1_6bn47")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+material_override = ExtResource("2_7f04m")
