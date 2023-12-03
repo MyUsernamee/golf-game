@@ -1,6 +1,7 @@
 extends Node3D
 
 var view_direction: Vector3 = Vector3.FORWARD
+var mouse_delta: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,9 @@ func _process(delta):
 
 
 func _input(event):
+
+	if event is InputEventMouseMotion:
+		mouse_delta = event.relative
 
 	if Input.is_action_pressed("click"):
 		return
