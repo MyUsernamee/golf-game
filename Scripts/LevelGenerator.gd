@@ -31,57 +31,16 @@ func generate_from_peice(peice, it):
 			# Spawn an end peice
 			var end = end_piece.instantiate()
 			peice.add_child(end)
-
-			end.position = connector.position
-			
-			# We then need to rotate the normals to be opposite of the connector
-			var normal = connector.transform.basis.z
-			var new_normal = end.transform.basis.z
-
-			print("Dot" + str(normal.dot(new_normal)))
-
-			if normal.dot(new_normal) == 1:
-				end.rotate_y(PI)
-				end.position += connector.position
-			elif normal.dot(new_normal) == -1:
-				end.position -= connector.position
-			else:
-				# Dot of two vectors is the cos of the angle between them
-				var angle = acos(normal.dot(new_normal))
-				var axis = normal.cross(new_normal)
-				end.rotate(axis.normalized(), angle)
-				end.position -= connector.position.rotated(axis.normalized(), angle)
+			connect_peices_at_connectors(peice, connector, end, end.connectors[0])
 
 			return
 
 		var newp = select_random_compatable_peice(connector)
-		# We spawn the piece
 		var level_piece = newp.instantiate()
 		peice.add_child(level_piece)
 		var connection = select_random_connector(level_piece)
 
-		print("Connecting: " + str(connector) + " to " + str(connection))
-
-		level_piece.position = connector.position
-
-		# We then need to rotate the normals to be opposite of the connector
-		var normal = connector.transform.basis.z
-		var new_normal = connection.transform.basis.z
-
-		print("Normal: " + str(normal) + " New Normal: " + str(new_normal))
-
-		if normal.dot(new_normal) == 1:
-			level_piece.rotate_y(PI)
-			level_piece.position += connection.position
-		elif normal.dot(new_normal) == -1:
-			#level_piece.rotate_y(PI)
-			level_piece.position -= connection.position
-		else:
-			# Dot of two vectors is the cos of the angle between them
-			var angle = acos(normal.dot(new_normal))
-			var axis = normal.cross(new_normal)
-			level_piece.rotate(axis.normalized(), angle)
-			level_piece.position -= connection.position.rotated(axis.normalized(), angle)
+		connect_peices_at_connectors(peice, connector, level_piece, connection)
 
 		# We delete the connection so we don't use it again
 		# WE  actaully delete thenode
@@ -95,3 +54,24 @@ func select_random_compatable_peice(connector):
 
 func select_random_connector(peice):
 	return peice.connectors[randi() % peice.connectors.size()]
+
+func connect_peices_at_connectors(piece1, connector1, piece2, connector2):
+
+	piece1.add_child(piece2)
+	piece2.position = connector1.position
+
+	# We need to rotate the peice so that the connectors are on the same plane
+	var normal1 = connector1.transform.basis.z
+	var normal2 = connector2.transform.basis.z
+
+	if normal1.dot(normal2) == 1:
+		piece2.rotate_y(PI)
+		piece2.position += connector2.position
+	elif normal1.dot(normal2) == -1:
+		piece2.position -= connector2.position
+	else:
+		# Dot of two vectors is the cos of the angle between them
+		var angle = acos(normal1.dot(normal2))
+		var axis = normal1.cross(normal2)
+		piece2.rotate(axis.normalized(), angle)
+		piece2.position -= connector2.position.rotated(axis.normalized(), angle)
