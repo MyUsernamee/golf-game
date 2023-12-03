@@ -74,8 +74,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_d23b4")
 skeleton = NodePath("../../..")
 
+[node name="End" parent="." instance=ExtResource("8_4ehfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98386, 13.5827, 8.87558)
+
 [node name="LevelGenerator" type="Node3D" parent="."]
 script = ExtResource("6_dtale")
 start_piece = ExtResource("6_re0tq")
 end_piece = ExtResource("8_4ehfh")
 pieces = Array[PackedScene]([ExtResource("9_nbpcp")])
+
+[node name="Middle" parent="." instance=ExtResource("9_nbpcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66177, 0, -0.0177231)

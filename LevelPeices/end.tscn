@@ -7,3 +7,6 @@
 
 [node name="MeshInstance3D" parent="." index="0"]
 material_override = ExtResource("2_7f04m")
+
+[node name="LevelConnector" parent="." index="2"]
+rotation_edit_mode = 2
