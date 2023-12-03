@@ -13,7 +13,12 @@ func _process(delta):
 
 
 func _input(event):
+
+	if Input.is_action_pressed("click"):
+		return
+
 	if event is InputEventMouseMotion:
 		var d = event.relative / 1000.0
 		view_direction = view_direction.rotated(Vector3.UP, -d.x)
 		view_direction = view_direction.rotated(view_direction.cross(Vector3.UP).normalized(), -d.y)
+		
