@@ -1,0 +1,3 @@
+class_name LevelConnector
+
+extends Node3D
