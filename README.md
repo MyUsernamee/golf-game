@@ -1,5 +1,4 @@
-# Godot Quick Primitives
-
+# Golf Game
 ## About
 Quick primitives is a simple plugin for Godot that allows you to quickly create 3D primitives in your projects using a shortcut bar.
 

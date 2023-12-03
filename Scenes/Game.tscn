@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://bgyhyon47n4f"]
 
-[ext_resource type="Script" path="res://Game.gd" id="1_o5nbn"]
-[ext_resource type="Material" uid="uid://m1j8r7bxwou5" path="res://dark.tres" id="1_x4ak5"]
-[ext_resource type="Script" path="res://Controller.gd" id="2_ig7ge"]
-[ext_resource type="Script" path="res://FollowCamera.gd" id="3_05lic"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_o5nbn"]
+[ext_resource type="Material" uid="uid://m1j8r7bxwou5" path="res://Materials/dark.tres" id="1_x4ak5"]
+[ext_resource type="Script" path="res://Scripts/Controller.gd" id="2_ig7ge"]
+[ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="3_05lic"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5tod"]
 sky_top_color = Color(0.501961, 0.701961, 0.992157, 1)
