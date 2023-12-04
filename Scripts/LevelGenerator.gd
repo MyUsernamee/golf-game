@@ -37,6 +37,7 @@ func generate_from_peice(peice, it):
 
 		var newp = select_random_compatable_peice(connector)
 		var level_piece = newp.instantiate()
+
 		peice.add_child(level_piece)
 		var connection = select_random_connector(level_piece)
 
@@ -52,14 +53,13 @@ func generate_from_peice(peice, it):
 func select_random_compatable_peice(connector):
 	return pieces[randi() % pieces.size()]
 
+
 func select_random_connector(peice):
 	return peice.connectors[randi() % peice.connectors.size()]
 
 func connect_peices_at_connectors(piece1, connector1, piece2, connector2):
 
 	piece2.position = connector1.position
-
-	
 
 	# We need to rotate the peice so that the connectors are on the same plane
 	var normal1 = connector1.transform.basis.z
