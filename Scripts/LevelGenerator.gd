@@ -44,7 +44,7 @@ func generate_from_peice(peice, it):
 
 		# We delete the connection so we don't use it again
 		# WE  actaully delete thenode
-		connection.queue_free()
+		#connection.queue_free()
 		level_piece.connectors.erase(connection)
 
 		generate_from_peice(level_piece, it + 1)
@@ -59,13 +59,16 @@ func connect_peices_at_connectors(piece1, connector1, piece2, connector2):
 
 	piece2.position = connector1.position
 
+	
+
 	# We need to rotate the peice so that the connectors are on the same plane
 	var normal1 = connector1.transform.basis.z
 	var normal2 = connector2.transform.basis.z
 
 	if normal1.dot(normal2) == 1:
+		piece2.position -= connector2.position.rotated(Vector3(0, 1, 0), PI)
+		
 		piece2.rotate_y(PI)
-		piece2.position += connector2.position
 	elif normal1.dot(normal2) == -1:
 		piece2.position -= connector2.position
 	else:
@@ -74,3 +77,5 @@ func connect_peices_at_connectors(piece1, connector1, piece2, connector2):
 		var axis = normal1.cross(normal2)
 		piece2.rotate(axis.normalized(), angle)
 		piece2.position -= connector2.position.rotated(axis.normalized(), angle)
+
+	
