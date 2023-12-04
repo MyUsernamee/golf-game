@@ -27,7 +27,7 @@ func generate_from_peice(peice, it):
 	# We start by generating peices on all of the connectors
 	for connector in peice.connectors:
 
-		if it >= 10:
+		if it >= 50:
 			# Spawn an end peice
 			var end = end_piece.instantiate()
 			peice.add_child(end)
@@ -57,7 +57,6 @@ func select_random_connector(peice):
 
 func connect_peices_at_connectors(piece1, connector1, piece2, connector2):
 
-	piece1.add_child(piece2)
 	piece2.position = connector1.position
 
 	# We need to rotate the peice so that the connectors are on the same plane

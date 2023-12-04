@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgyhyon47n4f"]
+[gd_scene load_steps=19 format=3 uid="uid://bgyhyon47n4f"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="1_0rfsq"]
 [ext_resource type="Material" uid="uid://m1j8r7bxwou5" path="res://Materials/dark.tres" id="2_c1sgj"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bjvitnsuib3xa" path="res://LevelPeices/start.tscn" id="6_re0tq"]
 [ext_resource type="PackedScene" uid="uid://dj0y4exjehdhh" path="res://LevelPeices/end.tscn" id="8_4ehfh"]
 [ext_resource type="PackedScene" uid="uid://kv0hrqqaghqe" path="res://LevelPeices/middle.tscn" id="9_nbpcp"]
+[ext_resource type="PackedScene" uid="uid://ldctlvin1jnv" path="res://LevelPeices/right_turn.tscn" id="10_pmvfx"]
+[ext_resource type="PackedScene" uid="uid://bu30gfrd6usyt" path="res://LevelPeices/ramp.tscn" id="11_3qjag"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5tod"]
 sky_top_color = Color(0.501961, 0.701961, 0.992157, 1)
@@ -78,4 +80,4 @@ skeleton = NodePath("../../..")
 script = ExtResource("6_dtale")
 start_piece = ExtResource("6_re0tq")
 end_piece = ExtResource("8_4ehfh")
-pieces = Array[PackedScene]([ExtResource("9_nbpcp")])
+pieces = Array[PackedScene]([ExtResource("9_nbpcp"), ExtResource("10_pmvfx"), ExtResource("11_3qjag")])
